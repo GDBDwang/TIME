@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炫酷开学倒计时</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #87CEEB; /* 浅蓝色背景 */
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* 防止内容溢出 */
+        }
+        .title {
+            font-size: 4.5em; /* 进一步增大字号 */
+            margin-bottom: 20px; /* 增加下边距 */
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            top: -100px; /* 进一步向上移动 */
+        }
+        .countdown-container {
+            padding: 20px 40px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+            margin-top: 20px; /* 添加上边距以稍微向上移动倒计时模块 */
+        }
+        .countdown-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .countdown-time {
+            font-size: 1.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .countdown-time div {
+            margin: 0 10px;
+             /* 可根据需要添加动画效果 */
+            animation: blink 1s infinite;
+        }
+        .motivational-message {
+            font-size: 1.3em;
+            margin-top: 80px; /* 增加上边距以向下移动励志性话语 */
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+          .footer {
+            position: fixed; /* 修改为fixed以消除底部空隙 */
+            bottom: 0;
+            width: 100%;
+            background-color: black; /* 底栏变成黑色背景 */
+            color: white; /* 底栏字体为白色 */
+            text-align: center;
+            padding: 10px 0;
+        }
+        .footer a {
+            color: white; /* 确保超链接文字也是白色 */
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Time · Richard</div>
+    <div class="countdown-container">
+        <div class="countdown-title">距高二下学期开学还有</div>
+        <div class="countdown-time" id="countdown">
+            <div id="days">00</div>天
+            <div id="hours">00</div>小时
+            <div id="minutes">00</div>分
+            <div id="seconds">00</div>秒
+        </div>
+    </div>
+    <div class="motivational-message">开学很快，可自由支配的时间十分珍贵，请充分利用每分每秒，记住，你的目标是600分！</div>
+     <div class="footer">
+        <a href="https://blog.richardw.top/">访问我的博客</a> <!-- 底栏第一行，添加超链接 -->
+        <br>
+        ©2025 Wang Zitong <!-- 底栏第二行，原底栏字体内容 -->
+    </div>
+
+    <script>
+        // 假设下学期开学日期为2025年9月1日
+        var targetDate = new Date("February 13, 2025 00:00:00").getTime();
+
+        function updateCountdown() {
+            var now = new Date().getTime();
+            var distance = targetDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(interval);
+                document.getElementById("countdown").innerHTML = "高二下学期已经开学啦，此刻就是黑马霸榜之时！";
+            }
+        }
+
+        var interval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
