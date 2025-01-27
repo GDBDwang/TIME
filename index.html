@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>Time · Richard</title>
     <style>
         body {
@@ -16,46 +17,45 @@
             font-family: 'Arial', sans-serif;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 10px; /* 调整内边距以适应小屏幕 */
             box-sizing: border-box;
             overflow: hidden; /* 防止内容溢出 */
         }
         .title {
-            font-size: 4.5em; /* 进一步增大字号 */
-            margin-bottom: 20px; /* 增加下边距 */
+            font-size: 3em; /* 调整字号以适应小屏幕 */
+            margin-bottom: 15px; /* 调整下边距 */
             text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
             position: relative;
-            top: -100px; /* 进一步向上移动 */
+            top: -50px; /* 调整向上移动的距离 */
         }
         .countdown-container {
-            padding: 20px 40px;
+            padding: 15px 30px; /* 调整内边距 */
             border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.2);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             animation: float 3s ease-in-out infinite;
-            margin-top: 20px; /* 添加上边距以稍微向上移动倒计时模块 */
+            margin-top: 15px; /* 调整上边距 */
         }
         .countdown-title {
-            font-size: 2em;
-            margin-bottom: 20px;
+            font-size: 1.5em; /* 调整字号 */
+            margin-bottom: 15px; /* 调整下边距 */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .countdown-time {
-            font-size: 1.5em;
+            font-size: 1.2em; /* 调整字号 */
             display: flex;
             justify-content: center;
             align-items: center;
         }
         .countdown-time div {
-            margin: 0 10px;
-             /* 可根据需要添加动画效果 */
+            margin: 0 8px; /* 调整外边距 */
             animation: blink 1s infinite;
         }
         .motivational-message {
-            font-size: 1.3em;
-            margin-top: 80px; /* 增加上边距以向下移动励志性话语 */
+            font-size: 1em; /* 调整字号 */
+            margin-top: 50px; /* 调整上边距 */
             color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
           .footer {
             position: fixed; /* 修改为fixed以消除底部空隙 */
