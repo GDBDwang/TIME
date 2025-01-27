@@ -1,139 +1,22 @@
+<title>Device Detection</title>
+    <script>
+        function detectDeviceType() {
+            var userAgent = navigator.userAgent.toLowerCase();
+            if (/mobile|android|touch|webos|iphone|ipod/i.test(userAgent)) {
+                // 如果是手机端，则跳转到手机端页面
+                window.location.href = './mobile/';
+            } else {
+                // 如果是电脑端，则跳转到电脑端页面
+                window.location.href = './desktop/';
+            }
+        }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>Time · Richard</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #87CEEB; /* 浅蓝色背景 */
-            font-family: 'Arial', sans-serif;
-            color: white;
-            text-align: center;
-            padding: 10px; /* 调整内边距以适应小屏幕 */
-            box-sizing: border-box;
-            overflow: hidden; /* 防止内容溢出 */
-        }
-        .title {
-            font-size: 3em; /* 调整字号以适应小屏幕 */
-            margin-bottom: 15px; /* 调整下边距 */
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-            position: relative;
-            top: -50px; /* 调整向上移动的距离 */
-        }
-        .countdown-container {
-            padding: 15px 30px; /* 调整内边距 */
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            animation: float 3s ease-in-out infinite;
-            margin-top: 15px; /* 调整上边距 */
-        }
-        .countdown-title {
-            font-size: 1.5em; /* 调整字号 */
-            margin-bottom: 15px; /* 调整下边距 */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .countdown-time {
-            font-size: 1.2em; /* 调整字号 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .countdown-time div {
-            margin: 0 8px; /* 调整外边距 */
-            animation: blink 1s infinite;
-        }
-        .motivational-message {
-            font-size: 1em; /* 调整字号 */
-            margin-top: 50px; /* 调整上边距 */
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-          .footer {
-            position: fixed; /* 修改为fixed以消除底部空隙 */
-            bottom: 0;
-            width: 100%;
-            background-color: black; /* 底栏变成黑色背景 */
-            color: white; /* 底栏字体为白色 */
-            text-align: center;
-            padding: 10px 0;
-        }
-        .footer a {
-            color: white; /* 确保超链接文字也是白色 */
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        @keyframes blink {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-        }
-    </style>
+        // 在页面加载完成后调用函数来检测设备类型
+        window.onload = detectDeviceType;
+    </script>
 </head>
 <body>
-    <div class="title">Time · Richard</div>
-    <div class="countdown-container">
-        <div class="countdown-title">距高二下学期开学还有</div>
-        <div class="countdown-time" id="countdown">
-            <div id="days">00</div>天
-            <div id="hours">00</div>小时
-            <div id="minutes">00</div>分
-            <div id="seconds">00</div>秒
-        </div>
-    </div>
-    <div class="motivational-message">开学很快，可自由支配的时间十分珍贵，请充分利用每分每秒，记住，你的目标是600分！</div>
-     <div class="footer">
-        <a href="https://blog.richardw.top/">访问我的博客</a> <!-- 底栏第一行，添加超链接 -->
-        <br>
-        ©2025 Wang Zitong <!-- 底栏第二行，原底栏字体内容 -->
-    </div>
-
-    <script>
-        // 假设下学期开学日期为2025年9月1日
-        var targetDate = new Date("February 13, 2025 00:00:00").getTime();
-
-        function updateCountdown() {
-            var now = new Date().getTime();
-            var distance = targetDate - now;
-
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = String(days).padStart(2, '0');
-            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-
-            if (distance < 0) {
-                clearInterval(interval);
-                document.getElementById("countdown").innerHTML = "高二下学期已经开学啦，此刻就是黑马霸榜之时！";
-            }
-        }
-
-        var interval = setInterval(updateCountdown, 1000);
-    </script>
-</body>
-</html>
+    <!-- 这个页面将很快跳转到手机端或电脑端的页面 -->
+    <noscript>
+        <p>JavaScript is required to detect your device type and redirect you to the appropriate page.</p>
+    </noscript>
